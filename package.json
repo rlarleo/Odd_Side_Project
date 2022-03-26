@@ -47,7 +47,6 @@
     "react-masonry-component": "^6.2.1",
     "react-parallax": "^3.3.0",
     "react-parallax-component": "^1.0.6",
-    "react-tsparticles": "^1.42.4",
     "react-responsive": "^9.0.0-beta.4",
     "react-reveal": "^1.2.2",
     "react-rnd": "^10.2.3",
@@ -57,15 +56,27 @@
     "react-slick": "^0.28.1",
     "react-stickynode": "4.0.0",
     "react-tabs": "^3.2.2",
+    "react-tsparticles": "^1.42.4",
     "styled-components": "^5.2.1",
     "styled-system": "5.1.5",
     "swiper": "^7.0.6",
     "tsparticles": "^1.42.4"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "firebase-tools": "^9.10.0",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-svgo": "^10.0.0"
+    "imagemin-svgo": "^10.0.0",
+    "prettier": "^2.6.1"
   }
 }

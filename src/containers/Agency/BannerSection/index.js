@@ -22,6 +22,8 @@ const BannerSection = ({
 }) => {
   const router = useRouter()
 
+  const envTest = process.env.NEXT_PUBLIC_BASE_URL;
+
   const ButtonGroup = () => (
     <Fragment>
       <Button 
@@ -30,7 +32,7 @@ const BannerSection = ({
         {...btnStyle}
       />
       <Button
-        title="qwe WORKS"
+        title={envTest}
         variant="textButton"
         icon={<i className="flaticon-next" />}
         {...outlineBtnStyle}
