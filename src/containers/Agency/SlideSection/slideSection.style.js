@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
-const TestimonialSectionWrapper = styled.section`
+const SlideSectionWrapper = styled.section`
   margin: 80px 0 0;
   background-color: #f6f7fb;
   background: linear-gradient(transparent 50%, #f6f7fb);
@@ -76,4 +76,4 @@ const ImageWrapper = styled.div`
 
 export { TextWrapper, ImageWrapper };
 
-export default TestimonialSectionWrapper;
+export default SlideSectionWrapper;

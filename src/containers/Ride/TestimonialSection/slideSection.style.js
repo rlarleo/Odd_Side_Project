@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TestimonialSectionWrapper = styled.section`
+const SlideSectionWrapper = styled.section`
   padding: 120px 0 120px;
   overflow: hidden;
   background: #fcfcfc;
@@ -127,4 +127,4 @@ const ClientName = styled.div`
 
 export { TextWrapper, ImageWrapper, ClientName, RoundWrapper };
 
-export default TestimonialSectionWrapper;
+export default SlideSectionWrapper;

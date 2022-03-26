@@ -10,14 +10,14 @@ import Container from 'common/components/UI/Container';
 import GlideCarousel from 'common/components/GlideCarousel';
 import GlideSlide from 'common/components/GlideCarousel/glideSlide';
 import QuoteImage from 'common/assets/image/ride/quote.svg';
-import TestimonialSectionWrapper, {
+import SlideSectionWrapper, {
   TextWrapper,
   ImageWrapper,
   RoundWrapper,
   ClientName,
-} from './testimonialSection.style';
+} from './slideSection.style';
 
-const TestimonialSection = ({
+const SlideSection = ({
   btnWrapperStyle,
   commentStyle,
   nameStyle,
@@ -36,7 +36,7 @@ const TestimonialSection = ({
   };
 
   return (
-    <TestimonialSectionWrapper id="testimonial_section">
+    <SlideSectionWrapper id="testimonial_section">
       <Container noGutter mobileGutter width="1200px" className="container">
         <Box {...secTitleWrapper}>
           <Heading {...secTitle} content="Follow Your Own Path" />
@@ -93,12 +93,12 @@ const TestimonialSection = ({
           </Fragment>
         </GlideCarousel>
       </Container>
-    </TestimonialSectionWrapper>
+    </SlideSectionWrapper>
   );
 };
 
-// TestimonialSection style props
-TestimonialSection.propTypes = {
+// SlideSection style props
+SlideSection.propTypes = {
   sectionHeader: PropTypes.object,
   sectionTitle: PropTypes.object,
 
@@ -114,8 +114,8 @@ TestimonialSection.propTypes = {
   secDescription: PropTypes.object,
 };
 
-// TestimonialSection default style
-TestimonialSection.defaultProps = {
+// SlideSection default style
+SlideSection.defaultProps = {
   // sub section default style
   secTitleWrapper: {
     mb: ['60px', '60px', '60px', '60px', '60px'],
@@ -185,4 +185,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default SlideSection;

@@ -11,7 +11,8 @@ import FeatureSection from 'containers/Agency/FeatureSection';
 import AboutUsSection from 'containers/Agency/AboutUsSection';
 import WorkHistory from 'containers/Agency/WorkHistory';
 import BlogSection from 'containers/Agency/BlogSection';
-import TestimonialSection from 'containers/Agency/TestimonialSection';
+import SlideSection from 'containers/Agency/SlideSection';
+import ButtonSection from 'containers/Agency/ButtonSection';
 import TeamSection from 'containers/Agency/TeamSection';
 import VideoSection from 'containers/Agency/VideoSection';
 import NewsletterSection from 'containers/Agency/NewsletterSection';
@@ -46,16 +47,17 @@ const Main = () => {
             </DrawerProvider>
           </Sticky>
           <BannerSection />
-          {/* <FeatureSection /> */}
           <AboutUsSection />
+          <SlideSection />
+          <ButtonSection />
+          {/* <FeatureSection /> */}
           {/* <WorkHistory />
           <QualitySection /> */}
-          <BlogSection />
+          {/* <BlogSection /> */}
           <VideoSection />
-          <TestimonialSection />
           <TeamSection />
           <FaqSection />
-          <NewsletterSection />
+          {/* <NewsletterSection /> */}
           <Footer />
         </AgencyWrapper>
         {/* End of agency wrapper section */}

@@ -15,7 +15,7 @@ import TestimonialSecWrapper, {
 
 import { TESTIMONIALS } from 'common/data/Crypto';
 
-const TestimonialSection = ({
+const SlideSection = ({
   reviewStyle,
   TestimonialMeta,
   nameStyle,
@@ -70,7 +70,7 @@ const TestimonialSection = ({
   );
 };
 
-TestimonialSection.propTypes = {
+SlideSection.propTypes = {
   secTitleWrapper: PropTypes.object,
   secHeading: PropTypes.object,
   secText: PropTypes.object,
@@ -81,7 +81,7 @@ TestimonialSection.propTypes = {
   arrowStyle: PropTypes.object,
 };
 
-TestimonialSection.defaultProps = {
+SlideSection.defaultProps = {
   secTitleWrapper: {
     mb: ['40px', '40px', '50px', '75px'],
   },
@@ -131,4 +131,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default SlideSection;

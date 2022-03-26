@@ -9,12 +9,12 @@ import data from 'common/data/Agency';
 import Container from 'common/components/UI/Container';
 import GlideCarousel from 'common/components/GlideCarousel';
 import GlideSlide from 'common/components/GlideCarousel/glideSlide';
-import TestimonialSectionWrapper, {
+import SlideSectionWrapper, {
   TextWrapper,
   ImageWrapper,
-} from './testimonialSection.style';
+} from './slideSection.style';
 
-const TestimonialSection = ({
+const SlideSection = ({
   sectionHeader,
   sectionTitle,
   sectionSubTitle,
@@ -33,11 +33,11 @@ const TestimonialSection = ({
   };
 
   return (
-    <TestimonialSectionWrapper id="testimonialSection">
+    <SlideSectionWrapper id="slideSection">
       <Container>
         <Box {...sectionHeader}>
-          <Text content="CLIENT FEEDBACK" {...sectionSubTitle} />
-          <Heading content="What our client say about us" {...sectionTitle} />
+          <Text content="News" {...sectionSubTitle} />
+          <Heading content="I'm Iron Man" {...sectionTitle} />
         </Box>
         <GlideCarousel
           options={glideOptions}
@@ -78,12 +78,12 @@ const TestimonialSection = ({
           </Fragment>
         </GlideCarousel>
       </Container>
-    </TestimonialSectionWrapper>
+    </SlideSectionWrapper>
   );
 };
 
-// TestimonialSection style props
-TestimonialSection.propTypes = {
+// SlideSection style props
+SlideSection.propTypes = {
   sectionHeader: PropTypes.object,
   sectionTitle: PropTypes.object,
   sectionSubTitle: PropTypes.object,
@@ -96,8 +96,8 @@ TestimonialSection.propTypes = {
   designationStyle: PropTypes.object,
 };
 
-// TestimonialSection default style
-TestimonialSection.defaultProps = {
+// SlideSection default style
+SlideSection.defaultProps = {
   // section header default style
   sectionHeader: {
     pt: '30px',
@@ -165,4 +165,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default SlideSection;

@@ -40,12 +40,12 @@ const images = [
   },
 ];
 
-const TestimonialSection = ({ sectionWrapper, row, sectionSubTitle }) => {
+const SlideSection = ({ sectionWrapper, row, sectionSubTitle }) => {
   return (
     <Box
       {...sectionWrapper}
       className="testimonialSlider"
-      id="testimonialSection"
+      id="slideSection"
     >
       <Container>
         <Box className="testimonialDesWrapper">
@@ -62,12 +62,12 @@ const TestimonialSection = ({ sectionWrapper, row, sectionSubTitle }) => {
   );
 };
 
-TestimonialSection.propTypes = {
+SlideSection.propTypes = {
   sectionWrapper: PropTypes.object,
   title: PropTypes.object,
 };
 
-TestimonialSection.defaultProps = {
+SlideSection.defaultProps = {
   sectionWrapper: {
     as: 'section',
     pt: '0px',
@@ -88,4 +88,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default SlideSection;

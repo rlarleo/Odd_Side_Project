@@ -52,7 +52,7 @@ const BannerSection = ({
             <FeatureBlock
               title={
                 <Heading
-                  content="안녕 경근아"
+                  content="메인 화면입니다."
                   {...title}
                 />
               }

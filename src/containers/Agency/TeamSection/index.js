@@ -23,9 +23,9 @@ const TeamSection = ({
     <TeamSectionWrapper id="teamSection">
       <Container>
         <Box {...sectionHeader}>
-          <Text content="TEAM MEMBER" {...sectionSubTitle} />
+          <Text content="News" {...sectionSubTitle} />
           <Heading
-            content="Meet with team member behind scense"
+            content="팀 섹션"
             {...sectionTitle}
           />
         </Box>

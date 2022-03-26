@@ -27,7 +27,7 @@ const data = {
     },
     {
       label: 'Testimonial',
-      path: '#testimonialSection',
+      path: '#slideSection',
       offset: '100',
     },
   ],

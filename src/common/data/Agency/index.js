@@ -31,7 +31,7 @@ const data = {
     },
     {
       label: 'Testimonial',
-      path: '#testimonialSection',
+      path: '#slideSection',
       offset: '100',
     },
     {
@@ -88,27 +88,6 @@ const data = {
       title: 'Wireframing Task',
       description:
         'We respect our customer opinions and deals with them with perfect wireframing ',
-    },
-    {
-      id: 4,
-      icon: 'flaticon-startup',
-      title: 'Business Solutions',
-      description:
-        'We are commited to provide proper business solutions with reasonable pricing',
-    },
-    {
-      id: 5,
-      icon: 'flaticon-briefing',
-      title: 'Business Analysis',
-      description:
-        'A day to day report about your ongoing business for proper understanding',
-    },
-    {
-      id: 6,
-      icon: 'flaticon-creative',
-      title: 'Content Management',
-      description:
-        'Proper Content Management is important to find out the real clients for your agencies',
     },
   ],
   qualityFeature: [

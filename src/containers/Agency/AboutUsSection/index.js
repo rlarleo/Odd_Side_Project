@@ -6,7 +6,6 @@ import Text from 'common/components/Text';
 import Heading from 'common/components/Heading';
 import Card from 'common/components/Card';
 import NextImage from 'common/components/NextImage';
-import Button from 'common/components/Button';
 import FeatureBlock from 'common/components/FeatureBlock';
 import AboutUsSectionWrapper from './aboutUsSection.style';
 
@@ -71,7 +70,6 @@ const AboutUsSection = ({
                 title={<Heading content={feature.title} {...featureTitle} />}
               />
             ))}
-            <Button title="DISCOVER ITEM" {...btnStyle} />
           </Box>
         </Box>
       </Box>

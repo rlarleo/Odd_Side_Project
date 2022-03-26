@@ -11,9 +11,6 @@ import FeatureSectionWrapper from './featureSection.style';
 const FeatureSection = ({
   row,
   col,
-  sectionHeader,
-  sectionTitle,
-  sectionSubTitle,
   featureTitle,
   featureDescription,
   iconStyle,
@@ -23,13 +20,6 @@ const FeatureSection = ({
   return (
     <FeatureSectionWrapper id="featureSection">
       <Container>
-        <Box {...sectionHeader}>
-          <Text content="OUR SERVICES" {...sectionSubTitle} />
-          <Heading
-            content="Featured Service that We Provide"
-            {...sectionTitle}
-          />
-        </Box>
         <Box className="row" {...row}>
           {data.features.map((feature, index) => (
             <Box className="col" {...col} key={`feature-${index}`}>

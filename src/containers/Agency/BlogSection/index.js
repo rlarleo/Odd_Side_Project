@@ -22,9 +22,9 @@ const BlogSection = ({
     <BlogSectionWrapper id="blogSection">
       <Container>
         <Box {...sectionHeader}>
-          <Text content="PORTFOLIO" {...sectionSubTitle} />
+          <Text content="News" {...sectionSubTitle} />
           <Heading
-            content="Meet our work experience from customers"
+            content="Meet our work experience"
             {...sectionTitle}
           />
         </Box>
