@@ -50,7 +50,7 @@ const AboutUsSection = ({
             <FeatureBlock
               title={
                 <Heading
-                  content="Great Responsive & Strong Competitive People"
+                  content="WELCOME TO THE BORED APE YACHT CLUB"
                   {...title}
                 />
               }

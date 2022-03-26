@@ -46,9 +46,9 @@ const Main = () => {
             </DrawerProvider>
           </Sticky>
           <BannerSection />
-          <FeatureSection />
-          {/* <AboutUsSection />
-          <WorkHistory />
+          {/* <FeatureSection /> */}
+          <AboutUsSection />
+          {/* <WorkHistory />
           <QualitySection /> */}
           <BlogSection />
           <VideoSection />

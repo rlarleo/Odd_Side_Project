@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
   section {
     position: relative;
+    // background-color: black;
   }
   /* Drawer menu style */
   .drawer {
