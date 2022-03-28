@@ -44,67 +44,8 @@ const LoginModal = ({
   );
   return (
     <LoginModalWrapper>
-      <Box className="row" {...row}>
-        <Box className="col imageCol" {...col}>
-          <Image className="patternImage" src={LoginImage} alt="Login Banner" />
-        </Box>
-        <Box className="col tabCol" {...col}>
-          <Box {...contentWrapper}>
-            <Image src={LogoImage} {...logoStyle} alt="Logo" />
-            <Tabs
-              defaultActiveKey="loginForm"
-              animated={{ tabPane: true }}
-              // renderTabBar={() => <ScrollableInkTabBar />}
-              // renderTabContent={() => <TabContent />}
-            >
-              <TabPane tab="LOGIN" key="loginForm">
-                <Heading content="Welcome Folk" {...titleStyle} />
-                <Text
-                  content="Welcome to Mate Family. Please login with your personal account information letter."
-                  {...descriptionStyle}
-                />
-                <Button
-                  icon={<Image src={GoogleLogo} alt="Google Icon" />}
-                  title="Sign in with Google"
-                  iconPosition="left"
-                  className="google-login__btn"
-                  {...googleButtonStyle}
-                />
-
-                <Input inputType="email" isMaterial label="Email Address" />
-                <Input inputType="password" isMaterial label="Password" />
-                <CheckBox
-                  id="remember"
-                  htmlFor="remember"
-                  labelText="Remember Me"
-                />
-                <div>
-                  <LoginButtonGroup />
-                </div>
-              </TabPane>
-              <TabPane tab="REGISTER" key="registerForm">
-                <Heading content="Welcome Folk" {...titleStyle} />
-                <Text
-                  content="Welcome to Mate Family. Please login with your personal account information letter."
-                  {...descriptionStyle}
-                />
-                <Button
-                  icon={<Image src={GoogleLogo} alt="Google Icon" />}
-                  title="Sign up with Google"
-                  iconPosition="left"
-                  className="google-login__btn"
-                  {...googleButtonStyle}
-                />
-                <Input isMaterial label="Full Name" />
-                <Input inputType="email" isMaterial label="Email Address" />
-                <Input inputType="password" isMaterial label="Password" />
-                <div>
-                  <SignupButtonGroup />
-                </div>
-              </TabPane>
-            </Tabs>
-          </Box>
-        </Box>
+      <Box>
+        안녕 친구들
       </Box>
     </LoginModalWrapper>
   );

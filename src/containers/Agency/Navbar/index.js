@@ -18,6 +18,8 @@ import { DrawerContext } from 'common/contexts/DrawerContext';
 
 import data from 'common/data/Agency/';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 // Default close button for modal
 const CloseModalButton = () => (
   <Button
@@ -66,25 +68,12 @@ const Navbar = ({ navbarStyle, logoStyle }) => {
 
   // Authentication modal handler
   const handleLoginModal = () => {
-    openModal({
-      config: {
-        className: 'login-modal',
-        disableDragging: true,
-        width: '100%',
-        height: '100%',
-        animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
-        animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
-        transition: {
-          mass: 1,
-          tension: 180,
-          friction: 26,
-        },
-      },
-      component: LoginModal,
-      componentProps: {},
-      closeComponent: CloseModalButton,
-      closeOnClickOutside: false,
-    });
+    useSelector( (state) => state );
+    const dispatch = useDispatch();
+    const code = process.env.NEXT_PUBLIC_MANAGE_CODE;
+    const manageCode = prompt("관리자 코드를 입력해주세요.");
+    if(manageCode === code) alert("정답~");
+    dispatch({type: manageCode === code});
   };
 
   // Toggle drawer

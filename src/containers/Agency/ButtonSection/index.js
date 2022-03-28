@@ -11,7 +11,7 @@ import ButtonSectionWrapper, {
 
 const ButtonSection = ({ sectionHeader, sectionTitle, btnStyle }) => {
   const router = useRouter();
-  const envTest = process.env.NEXT_PUBLIC_BASE_URL;
+  const envTest = process.env.NEXT_PUBLIC_MANAGE_CODE;
   return (
     <ButtonSectionWrapper id="ButtonSection">
       <Container>

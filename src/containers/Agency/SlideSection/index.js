@@ -4,6 +4,7 @@ import Box from 'common/components/Box';
 import Text from 'common/components/Text';
 import Heading from 'common/components/Heading';
 import Button from 'common/components/Button';
+import Management from 'common/components/Management';
 import NextImage from 'common/components/NextImage';
 import data from 'common/data/Agency';
 import Container from 'common/components/UI/Container';
@@ -13,6 +14,7 @@ import SlideSectionWrapper, {
   TextWrapper,
   ImageWrapper,
 } from './slideSection.style';
+import { useSelector } from 'react-redux'
 
 const SlideSection = ({
   sectionHeader,
@@ -24,6 +26,8 @@ const SlideSection = ({
   btnStyle,
   designationStyle,
 }) => {
+  const manager = useSelector( (state) => state );
+  console.log(manager);
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -36,8 +40,9 @@ const SlideSection = ({
     <SlideSectionWrapper id="slideSection">
       <Container>
         <Box {...sectionHeader}>
+          <Management url="slide" />
           <Text content="News" {...sectionSubTitle} />
-          <Heading content="I'm Iron Man" {...sectionTitle} />
+          <Heading content="I'm Iron Mann" {...sectionTitle} />
         </Box>
         <GlideCarousel
           options={glideOptions}
