@@ -11,4 +11,10 @@ export class AuthController {
     async registerAccount(@Req() req: Request, @Body() userDTO: UserDTO): Promise<any> {
         return await this.authService.registerNewUser(userDTO);
     }
+
+    @Post('/test')
+    async test(@Req() req: Request, @Body() userDTO: UserDTO): Promise<any> {
+        console.log('test');
+        return true;
+    }
 }
