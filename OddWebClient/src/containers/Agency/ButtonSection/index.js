@@ -6,7 +6,7 @@ import Button from 'common/components/Button';
 import Container from 'common/components/UI/Container';
 import ButtonSectionWrapper, {
   ButtonForm,
-} from './ButtonSection.style';
+} from './buttonSection.style';
 
 
 const ButtonSection = ({ sectionHeader, sectionTitle, btnStyle }) => {
