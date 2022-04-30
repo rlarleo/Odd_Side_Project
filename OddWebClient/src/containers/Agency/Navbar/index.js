@@ -68,12 +68,25 @@ const Navbar = ({ navbarStyle, logoStyle }) => {
 
   // Authentication modal handler
   const handleLoginModal = () => {
-    useSelector( (state) => state );
-    const dispatch = useDispatch();
-    const code = process.env.NEXT_PUBLIC_MANAGE_CODE;
-    const manageCode = prompt("관리자 코드를 입력해주세요.");
-    if(manageCode === code) alert("정답~");
-    dispatch({type: manageCode === code});
+    openModal({
+      config: {
+        className: 'login-modal',
+        disableDragging: true,
+        width: '100%',
+        height: '100%',
+        animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
+        animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
+        transition: {
+          mass: 1,
+          tension: 180,
+          friction: 26,
+        },
+      },
+      component: LoginModal,
+      componentProps: {},
+      closeComponent: CloseModalButton,
+      closeOnClickOutside: false,
+    });
   };
 
   // Toggle drawer

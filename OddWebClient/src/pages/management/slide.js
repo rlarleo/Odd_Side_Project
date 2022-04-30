@@ -49,6 +49,7 @@ const Silde = () => {
     console.log(file);
     console.log(file[0]);
     setSaveFile(file[0]);
+
   }, []);
 
   const handleSaveFile = useCallback((file) => async () => {

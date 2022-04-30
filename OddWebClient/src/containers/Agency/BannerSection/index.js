@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import {useRouter} from 'next/router';
 import PropTypes from 'prop-types';
 import Box from 'common/components/Box';
@@ -9,6 +9,9 @@ import FeatureBlock from 'common/components/FeatureBlock';
 import Container from 'common/components/UI/Container';
 import Particles from '../../Agency/Particle';
 import BannerWrapper, { DiscountLabel } from './bannerSection.style';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { createStore } from 'redux';
+import Axios from 'axios';
 
 const BannerSection = ({
   row,
@@ -18,11 +21,24 @@ const BannerSection = ({
   description,
   discountText,
   discountAmount,
-  outlineBtnStyle,
 }) => {
   const router = useRouter()
+  const dispatch = useDispatch();
 
-  const envTest = process.env.NEXT_PUBLIC_BASE_URL;
+  const checkLofin = () => {
+    const result = Axios.get("http://localhost:3001/auth/isLogin").then((res) => {
+      console.log(res);
+      dispatch({ type: 'success' })
+    });
+    console.log(result.data);
+  }
+  const loginState = useSelector((state) => state);
+
+  // useEffect(() => {
+  //   checkLofin();
+  //   console.log(loginState);
+  // }, [loginState]);
+
 
   const ButtonGroup = () => (
     <Fragment>
@@ -31,17 +47,11 @@ const BannerSection = ({
         onClick={() => router.push('/images')}
         {...btnStyle}
       />
-      <Button
-        title={envTest}
-        variant="textButton"
-        icon={<i className="flaticon-next" />}
-        {...outlineBtnStyle}
-      />
     </Fragment>
   );
   return (
     <BannerWrapper>
-      <Particles />
+      {/* <Particles /> */}
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>

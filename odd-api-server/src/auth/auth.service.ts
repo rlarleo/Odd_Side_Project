@@ -15,4 +15,19 @@ export class AuthService {
         }
         return this.userService.save(newUser);
     }
+
+    async validateUserTest(): Promise<any> {
+        let userFind = 'kkd';
+        return userFind;
+    }
+    
+    async validateUser(user: UserDTO): Promise<UserDTO | undefined> {
+        let userFind: UserDTO = await this.userService.findByFields({ 
+            where: { email: user.email }
+        });
+        if(!userFind || user.password !== userFind.password) {
+            return undefined;
+        }
+        return userFind;
+    }
 }

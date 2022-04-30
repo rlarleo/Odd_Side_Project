@@ -35,12 +35,14 @@ const SlideSection = ({
     perView: 1,
     animationDuration: 700,
   };
+  
+  const isLogin = useSelector((state) => state);
 
   return (
     <SlideSectionWrapper id="slideSection">
       <Container>
         <Box {...sectionHeader}>
-          <Management url="slide" />
+          {isLogin && <Management url="slide" />}
           <Text content="News" {...sectionSubTitle} />
           <Heading content="I'm Iron Mann" {...sectionTitle} />
         </Box>

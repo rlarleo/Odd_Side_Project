@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs, { TabPane } from 'rc-tabs';
 // import TabContent from 'rc-tabs/lib/TabContent';
@@ -7,14 +7,15 @@ import Box from 'common/components/Box';
 import Text from 'common/components/Text';
 import Heading from 'common/components/Heading';
 import Input from 'common/components/Input';
-import CheckBox from 'common/components/Checkbox/index';
 import Button from 'common/components/Button';
 import Image from 'common/components/Image';
 import LoginModalWrapper from './loginModal.style';
 import 'rc-tabs/assets/index.css';
 import LogoImage from 'common/assets/image/agency/logo.png';
 import LoginImage from 'common/assets/image/agency/login-bg.jpg';
-import GoogleLogo from 'common/assets/image/agency/google-icon.jpg';
+import { ConnectingAirportsOutlined } from '@mui/icons-material';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
 
 const LoginModal = ({
   row,
@@ -23,29 +24,117 @@ const LoginModal = ({
   logoStyle,
   titleStyle,
   contentWrapper,
-  outlineBtnStyle,
   descriptionStyle,
-  googleButtonStyle,
 }) => {
+  const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
+  const [registerInfo, setRegisterInfo] = useState({ email: '', username: '', password: '' });
+  const dispatch = useDispatch();
+  const loginState = useSelector((state) => state);
+
   const LoginButtonGroup = () => (
-    <Fragment>
-      <Button className="default" title="LOGIN" {...btnStyle} />
-      <Button
-        title="Forget Password"
-        variant="textButton"
-        {...outlineBtnStyle}
-      />
-    </Fragment>
+      <Button className="default" title="LOGIN" onClick={() => handleLogin()} {...btnStyle} />
+  );
+  const LogoutButtonGroup = () => (
+      <Button className="default" title="LOGOUT" onClick={() => handleLogout()} {...btnStyle} />
   );
   const SignupButtonGroup = () => (
     <Fragment>
-      <Button className="default" title="REGISTER" {...btnStyle} />
+      <Button className="default" title="REGISTER" onClick={() => handleRegister()} {...btnStyle} />
     </Fragment>
   );
+
+  const handleLogout = () => {
+    Axios.post('http://localhost:3001/auth/login', {
+      email: loginInfo.email,
+      password: loginInfo.password,
+    })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: 'fail' });
+    })
+  }
+
+  const handleLogin = () => {
+    Axios.post('http://localhost:3001/auth/login', {
+      email: loginInfo.email,
+      password: loginInfo.password,
+    })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: 'success' });
+    })
+  }
+
+  const handleRegister = () => {
+    Axios.post('http://localhost:3001/auth/register', {
+      username: registerInfo.username,
+      password: registerInfo.password,
+      email: registerInfo.email,
+    })
+    .then(res => {
+      console.log(res);
+    })
+  }
+
+  const onChangeLoginInfo = (e, name) => {
+    setLoginInfo({
+      ...loginInfo,
+      [name]: e,
+    });
+  };
+
+  const onChangeRegisterInfo = (e, name) => {
+    setRegisterInfo({
+      ...registerInfo,
+      [name]: e,
+    });
+  };
+
   return (
     <LoginModalWrapper>
-      <Box>
-        안녕 친구들
+      <Box className="row" {...row}>
+        <Box className="col imageCol" {...col}>
+          <Image className="patternImage" src={LoginImage.src} alt="Login Banner" />
+        </Box>
+        <Box className="col tabCol" {...col}>
+          <Box {...contentWrapper}>
+            <Image src={LogoImage.src} {...logoStyle} alt="Logo Image" />
+            <Tabs
+              defaultActiveKey="loginForm"
+              animated={{ tabPane: true }}
+            >
+              <TabPane tab="LOGIN" key="loginForm">
+                <Heading content="Welcome Odd" {...titleStyle} style={{ paddingTop: "40px"}}/>
+                <Text
+                  content="Welcome to Odd. Please login with your personal account information letter."
+                  {...descriptionStyle}
+                />
+                {loginState? 
+                  (<div> 로그인 성공</div>) : 
+                  (<>
+                    <Input onChange={event => onChangeLoginInfo(event, "email")} inputType="email" isMaterial label="E-mail" />
+                    <Input onChange={event => onChangeLoginInfo(event, "password")} inputType="password" isMaterial label="Password" />
+                  </>)}
+                <div style={{ paddingTop: "40px", textAlign: "right" }}>
+                  {loginState? <LogoutButtonGroup /> : <LoginButtonGroup />}
+                </div>
+              </TabPane>
+              <TabPane tab="REGISTER" key="registerForm">
+                <Heading content="Welcome Odd" {...titleStyle} style={{ paddingTop: "40px"}} />
+                <Text
+                  content="Welcome to Odd. Please register with your personal account information letter."
+                  {...descriptionStyle}
+                />
+                <Input onChange={event => onChangeRegisterInfo(event, "username")} isMaterial label="Name" />
+                <Input onChange={event => onChangeRegisterInfo(event, "email")} inputType="email" isMaterial label="E-mail" />
+                <Input onChange={event => onChangeRegisterInfo(event, "password")} inputType="password" isMaterial label="Password" />
+                <div style={{ paddingTop: "40px", textAlign: "right" }}>
+                  <SignupButtonGroup onClick={() => handleRegister} />
+                </div>
+              </TabPane>
+            </Tabs>
+          </Box>
+        </Box>
       </Box>
     </LoginModalWrapper>
   );
@@ -88,6 +177,7 @@ LoginModal.defaultProps = {
     letterSpacing: '-0.025em',
     mt: '35px',
     mb: '10px',
+    pb: '20px',
   },
   // Description default style
   descriptionStyle: {
@@ -97,6 +187,7 @@ LoginModal.defaultProps = {
     letterSpacing: '-0.025em',
     mb: '23px',
     ml: '1px',
+    pb: '40px'
   },
   // Content wrapper style
   contentWrapper: {
