@@ -34,7 +34,7 @@ const Main = () => {
             <ResetCSS />
             <GlobalStyle />
             <AgencyWrapper>
-              <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
+              <Sticky top={0} innerZ={888} activeClass="sticky-nav-active">
                 <DrawerProvider>
                   <Navbar />
                 </DrawerProvider>

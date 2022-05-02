@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Box from 'common/components/Box';
+import CustomBox from 'common/components/Box';
 import Text from 'common/components/Text';
 import Heading from 'common/components/Heading';
 import Link from 'common/components/Link';
@@ -9,6 +9,50 @@ import FeatureBlock from 'common/components/FeatureBlock';
 import data from 'common/data/Agency';
 import Container from 'common/components/UI/Container';
 import BlogSectionWrapper from './blogSection.style';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { makeStyles } from '@material-ui/core/styles';
+import Switch from '@mui/material/Switch';
+import Paper from '@mui/material/Paper';
+import Slide from '@mui/material/Slide';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Box from 'common/components/Box';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      marginTop: theme.spacing(2),
+      justifyContent:"center",
+      display:'flex'
+    }
+  },
+  pagination: {
+    alignItems: 'center',
+    justify: 'center',
+  },
+  "& MuiPagination-ul css-wjh20t-MuiPagination-ul": {
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "'proxima-nova', 'Noto Sans KR', sans-serif",
+    letterSpacing: "-0.1px",
+  },
+}));
+
+const icon = (
+  <Paper sx={{ m: 1, width: 100, height: 100 }} elevation={4}>
+    <Box component="svg" sx={{ width: 100, height: 100 }}>
+      <Box
+        component="polygon"
+        sx={{
+          fill: (theme) => theme.palette.common.white,
+          stroke: (theme) => theme.palette.divider,
+          strokeWidth: 1,
+        }}
+        points="0,100 50,00, 100,100"
+      />
+    </Box>
+  </Paper>
+);
 
 const BlogSection = ({
   row,
@@ -18,39 +62,97 @@ const BlogSection = ({
   blogTitle,
   blogMeta,
 }) => {
+  const classes = useStyles();
+  const [checked, setChecked] = React.useState(false);
+  const containerRef = React.useRef(null);
+  const [page, setPage] = React.useState(1);
+
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  };
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+  
   return (
     <BlogSectionWrapper id="blogSection">
       <Container>
-        <Box {...sectionHeader}>
+        <CustomBox {...sectionHeader}>
           <Text content="News" {...sectionSubTitle} />
           <Heading
             content="Meet our work experience"
             {...sectionTitle}
           />
+        </CustomBox>
+        <Box
+          sx={{
+            height: 180,
+            width: 240,
+            display: 'flex',
+            padding: 2,
+            borderRadius: 1,
+            overflow: 'hidden',
+          }}
+          ref={containerRef}
+        >
+        <CustomBox className="row" {...row}>
+          {data.blog.map((post, index) => {
+            if(index <= page+1 && index >= page-1){
+              return (
+                <FeatureBlock
+                  key={`post_key-${index}`}
+                  id={`post_id-${post.id}`}
+                  className="blog__post"
+                  icon={
+                    <NextImage
+                      src={post.thumbnail_url}
+                      alt={`Blog Image ${post.id}`}
+                      className="blog__image"
+                      layout="fill"
+                    />
+                  }
+                  title={
+                    <Link href={post.postLink} {...blogTitle}>
+                      {post.title}
+                    </Link>
+                  }
+                  description={<Text content={post.date} {...blogMeta} />}
+                />)
+              } else return <></>
+          })}
+        </CustomBox>
         </Box>
-        <Box className="row" {...row}>
-          {data.blog.map((post, index) => (
-            <FeatureBlock
-              key={`post_key-${index}`}
-              id={`post_id-${post.id}`}
-              className="blog__post"
-              icon={
-                <NextImage
-                  src={post.thumbnail_url}
-                  alt={`Blog Image ${post.id}`}
-                  className="blog__image"
-                  layout="fill"
-                />
-              }
-              title={
-                <Link href={post.postLink} {...blogTitle}>
-                  {post.title}
-                </Link>
-              }
-              description={<Text content={post.date} {...blogMeta} />}
+        <Stack spacing={2} sx={{justifyContent: "space-between"}}>
+          <Pagination 
+            className={classes.pagination}
+            count={data.blog.length-2} // 3개씩 보여야 하므로 마지막 2개 제외
+            onChange={handlePageChange} 
+          />
+        </Stack>
+        {/* <Box
+          sx={{
+            height: 180,
+            width: 240,
+            display: 'flex',
+            padding: 2,
+            borderRadius: 1,
+            bgcolor: (theme) =>
+              theme.palette.mode === 'light' ? 'grey.100' : 'grey.900',
+            overflow: 'hidden',
+          }}
+          ref={containerRef}
+        >
+          <Box sx={{ width: 200 }}>
+            <FormControlLabel
+              control={<Switch checked={checked} onChange={handleChange} />}
+              label="Show from target"
             />
-          ))}
-        </Box>
+            <Slide direction="up" in={checked} container={containerRef.current}>
+              {icon}
+            </Slide>
+          </Box>
+        </Box> */}
       </Container>
     </BlogSectionWrapper>
   );

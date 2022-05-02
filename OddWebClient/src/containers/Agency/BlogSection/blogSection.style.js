@@ -17,7 +17,7 @@ const BlogSectionWrapper = styled.section`
       position: relative;
       width: calc(100% / 3 - 24px);
       height: 450px;
-      margin: 0 12px;
+      margin: 12px;
       transition: all 0.3s ease;
       @media only screen and (max-width: 1200px) {
         height: 400px;

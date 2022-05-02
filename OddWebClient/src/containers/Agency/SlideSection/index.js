@@ -31,7 +31,7 @@ const SlideSection = ({
   // Glide js options
   const glideOptions = {
     type: 'carousel',
-    autoplay: 5000,
+    // autoplay: 5000,
     perView: 1,
     animationDuration: 700,
   };
@@ -42,7 +42,7 @@ const SlideSection = ({
     <SlideSectionWrapper id="slideSection">
       <Container>
         <Box {...sectionHeader}>
-          {isLogin && <Management url="slide" />}
+          {isLogin && <Management url="news" />}
           <Text content="News" {...sectionSubTitle} />
           <Heading content="I'm Iron Mann" {...sectionTitle} />
         </Box>

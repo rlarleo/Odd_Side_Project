@@ -142,6 +142,20 @@ const data = {
       date: 'December 09, 2018',
       postLink: '#3',
     },
+    {
+      id: 4,
+      title: 'Alt architecture co.',
+      thumbnail_url: BlogImage3,
+      date: 'December 09, 2018',
+      postLink: '#3',
+    },
+    {
+      id: 5,
+      title: 'Alt architecture co.',
+      thumbnail_url: BlogImage3,
+      date: 'December 09, 2018',
+      postLink: '#3',
+    },
   ],
   teamMember: [
     {
@@ -232,7 +246,7 @@ const data = {
   testimonial: [
     {
       id: 1,
-      name: 'Jon Doe',
+      name: '1',
       designation: 'CEO of Denish Co.',
       comment:
         'Best working experience  with this amazing team & in future, we want to work together',
@@ -240,7 +254,7 @@ const data = {
     },
     {
       id: 2,
-      name: 'Roman Ul Oman',
+      name: '2',
       designation: 'Co-founder of QatarDiaries',
       comment:
         'Impressed with master class support of the team and really look forward for the future.',
@@ -248,7 +262,7 @@ const data = {
     },
     {
       id: 3,
-      name: 'Jone Doe',
+      name: '3',
       designation: 'Director of Beauty-queen',
       comment:
         'I have bought more than 10 themes on ThemeForest, and this is the first one I review. Wow! Amazing React Theme',
@@ -256,7 +270,7 @@ const data = {
     },
     {
       id: 4,
-      name: 'Roman Ul Oman',
+      name: '4',
       designation: 'Co-founder of QatarDiaries',
       comment:
         'Impressed with master class support of the team and really look forward for the future.',

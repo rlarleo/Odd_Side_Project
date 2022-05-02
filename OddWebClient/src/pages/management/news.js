@@ -7,7 +7,7 @@ import BlogSection from 'containers/Agency/BlogSection';
 import Button from 'common/components/Button';
 import axios from 'axios';
 
-const Silde = () => {
+const News = () => {
   const userFileRef = useRef();
   const [saveFile, setSaveFile] = useState({});
 
@@ -74,10 +74,7 @@ const Silde = () => {
   return (
     <ThemeProvider theme={agencyTheme}>
       <Fragment>
-        {/* Start agency head section */}
         <ResetCSS />
-        {/* End of agency head section */}
-        {/* Start agency wrapper section */}
         <AgencyWrapper>
           <BlogSection />
           <Button
@@ -107,4 +104,4 @@ const Silde = () => {
     </ThemeProvider>
   );
 };
-export default Silde;
+export default News;
