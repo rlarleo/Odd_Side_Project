@@ -22,33 +22,7 @@ const BannerSection = ({
   discountText,
   discountAmount,
 }) => {
-  const router = useRouter()
-  const dispatch = useDispatch();
 
-  const checkLofin = () => {
-    const result = Axios.get("http://localhost:3001/auth/isLogin").then((res) => {
-      console.log(res);
-      dispatch({ type: 'success' })
-    });
-    console.log(result.data);
-  }
-  const loginState = useSelector((state) => state);
-
-  // useEffect(() => {
-  //   checkLofin();
-  //   console.log(loginState);
-  // }, [loginState]);
-
-
-  const ButtonGroup = () => (
-    <Fragment>
-      <Button 
-        title="임시 이미지 업로드 버튼"
-        onClick={() => router.push('/images')}
-        {...btnStyle}
-      />
-    </Fragment>
-  );
   return (
     <BannerWrapper>
       {/* <Particles /> */}
@@ -56,13 +30,13 @@ const BannerSection = ({
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
-              <Text content="경근이를 위한" {...discountAmount} />
-              <Text content="페이지" {...discountText} />
+              <Text content="테스트 중입니다." {...discountAmount} />
+              <Text content="페이지 테스트" {...discountText} />
             </DiscountLabel>
             <FeatureBlock
               title={
                 <Heading
-                  content="메인 화면입니다."
+                  content="Hero Banner"
                   {...title}
                 />
               }
@@ -72,7 +46,6 @@ const BannerSection = ({
                   {...description}
                 />
               }
-              button={<ButtonGroup />}
             />
           </Box>
         </Box>

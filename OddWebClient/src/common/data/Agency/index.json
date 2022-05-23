@@ -227,28 +227,28 @@
         "name": "Jon Doe",
         "designation": "CEO of Denish Co.",
         "comment": "Best working experience  with this amazing team & in future, we want to work together",
-        "avatar_url": "../../assets/image/agency/client/denny.png"
+        "avatar_url": "../../assets/image/agency/client/1.jpg"
       },
       {
         "id": 2,
         "name": "Roman Ul Oman",
         "designation": "Co-founder of QatarDiaries",
         "comment": "Impressed with master class support of the team and really look forward for the future.",
-        "avatar_url": "../../assets/image/agency/client/menny.png"
+        "avatar_url": "../../assets/image/agency/client/2.jpg"
       },
       {
         "id": 3,
         "name": "Jon Doe",
         "designation": "Director of Beauty-queen",
         "comment": "I have bought more than 10 themes on ThemeForest, and this is the first one I review. Wow! Amazing React Theme",
-        "avatar_url": "../../assets/image/agency/client/denny.png"
+        "avatar_url": "../../assets/image/agency/client/3.jpg"
       },
       {
         "id": 4,
         "name": "Roman Ul Oman",
         "designation": "Co-founder of QatarDiaries",
         "comment": "Impressed with master class support of the team and really look forward for the future.",
-        "avatar_url": "../../assets/image/agency/client/menny.png"
+        "avatar_url": "../../assets/image/agency/client/4.jpg"
       }
     ],
     "faq": [{

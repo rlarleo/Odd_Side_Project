@@ -16,7 +16,7 @@ const IntroVideo = () => (
     title="ReactivePro"
     width="560"
     height="315"
-    src="https://www.youtube.com/embed/zkWyTveF32w"
+    src="https://www.youtube.com/embed/zQEPa_ry0Bs"
     frameBorder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
     allowFullScreen

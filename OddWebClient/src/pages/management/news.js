@@ -1,15 +1,17 @@
-import React, { Fragment, useRef, useState, useCallback } from 'react';
+import React, { useEffect, Fragment, useRef, useState, useCallback } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { agencyTheme } from 'common/theme/agency';
 import ResetCSS from 'common/assets/css/style';
 import { AgencyWrapper } from 'containers/Agency/agency.style';
 import BlogSection from 'containers/Agency/BlogSection';
 import Button from 'common/components/Button';
-import axios from 'axios';
+import Axios from 'axios';
+import ImageUploader from './ImageUploader'
 
 const News = () => {
   const userFileRef = useRef();
   const [saveFile, setSaveFile] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
 
   async function saveFileApi({ name, file }) {
     const APIController = 'auth';
@@ -19,7 +21,7 @@ const News = () => {
       formData.append('name', name);
       formData.append('file', file);
 
-      return await axios({
+      return await Axios({
         method: 'post',
         url: `${APIController}/test`,
         data: formData,
@@ -42,34 +44,35 @@ const News = () => {
   }, []);
 
   const handleUploadFile = useCallback((ref) => async () => {
-    const file = ref?.current.files;
-    if (!file) {
+    const fileList = ref?.current.files;
+    console.log(fileList);
+    if (!fileList) {
       return;
     }
-    console.log(file);
-    console.log(file[0]);
-    setSaveFile(file[0]);
-
-  }, []);
-
-  const handleSaveFile = useCallback((file) => async () => {
-    if (file.length === 0) {
-      alert('파일을 업로드 해주세요.');
-      return;
+    setSaveFile(fileList[0]);
+    const files = new FormData();
+    files.append('images', fileList[0]);
+    
+    for (var value of files.values()) {
+      console.log(value);
     }
-    const result = await saveFileApi({
-      name: 'test',
-      file,
-    });
-
+    const result = Axios.post('http://localhost:3001/files/disk_upload', 
+    files, 
+    {
+      headers: {
+        'Content-type': 'multipart/form-data',
+      },
+    })
+    .then(res => {
+      console.log(res);
+    })
     console.log(result);
 
-    // if (result?.data?.success) {
-    //   closeWindow(true);
-    // } else {
-    //   alert('파일 저장에 실패했습니다.');
-    // }
   }, []);
+
+  const handleClickOpen = () => {
+    setModalOpen(true);
+  };
 
   return (
     <ThemeProvider theme={agencyTheme}>
@@ -94,10 +97,11 @@ const News = () => {
           <Button
             type="button"
             title="파일저장"
-            onClick={handleSaveFile({saveFile})}
+            onClick={handleClickOpen}
           >
             저장하기
           </Button>
+          <ImageUploader open={modalOpen} setOpen={setModalOpen} />
         </AgencyWrapper>
         {/* End of agency wrapper section */}
       </Fragment>

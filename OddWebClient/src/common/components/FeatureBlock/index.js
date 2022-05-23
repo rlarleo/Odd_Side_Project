@@ -47,7 +47,6 @@ const FeatureBlock = ({
       {...props}
     >
       {Icon}
-
       {title || description || button ? (
         <Fragment>
           <ContentWrapper className="content__wrapper" {...contentStyle}>

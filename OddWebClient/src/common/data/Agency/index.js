@@ -4,8 +4,10 @@ import BlogImage3 from '../../assets/image/agency/blog/blog-img3.png';
 import Member1 from '../../assets/image/agency/team/member-1.jpg';
 import Member2 from '../../assets/image/agency/team/member-2.jpg';
 import Member3 from '../../assets/image/agency/team/member-3.jpg';
-import Denny from '../../assets/image/agency/client/denny.png';
-import Menny from '../../assets/image/agency/client/menny.png';
+import A from '../../assets/image/agency/client/1.jpg';
+import B from '../../assets/image/agency/client/2.jpg';
+import C from '../../assets/image/agency/client/3.jpg';
+import D from '../../assets/image/agency/client/4.jpg';
 
 const data = {
   menuItems: [
@@ -250,7 +252,7 @@ const data = {
       designation: 'CEO of Denish Co.',
       comment:
         'Best working experience  with this amazing team & in future, we want to work together',
-      avatar_url: Denny,
+      avatar_url: A,
     },
     {
       id: 2,
@@ -258,7 +260,7 @@ const data = {
       designation: 'Co-founder of QatarDiaries',
       comment:
         'Impressed with master class support of the team and really look forward for the future.',
-      avatar_url: Menny,
+      avatar_url: B,
     },
     {
       id: 3,
@@ -266,7 +268,7 @@ const data = {
       designation: 'Director of Beauty-queen',
       comment:
         'I have bought more than 10 themes on ThemeForest, and this is the first one I review. Wow! Amazing React Theme',
-      avatar_url: Denny,
+      avatar_url: C,
     },
     {
       id: 4,
@@ -274,7 +276,7 @@ const data = {
       designation: 'Co-founder of QatarDiaries',
       comment:
         'Impressed with master class support of the team and really look forward for the future.',
-      avatar_url: Menny,
+      avatar_url: D,
     },
   ],
   faq: [

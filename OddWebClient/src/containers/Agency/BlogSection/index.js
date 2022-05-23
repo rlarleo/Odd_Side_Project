@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CustomBox from 'common/components/Box';
 import Text from 'common/components/Text';
@@ -9,14 +9,14 @@ import FeatureBlock from 'common/components/FeatureBlock';
 import data from 'common/data/Agency';
 import Container from 'common/components/UI/Container';
 import BlogSectionWrapper from './blogSection.style';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 import { makeStyles } from '@material-ui/core/styles';
-import Switch from '@mui/material/Switch';
-import Paper from '@mui/material/Paper';
-import Slide from '@mui/material/Slide';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Box from 'common/components/Box';
+import{
+  Pagination,
+  Stack,
+  Paper,
+} from '@mui/material'
+import Axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,22 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const icon = (
-  <Paper sx={{ m: 1, width: 100, height: 100 }} elevation={4}>
-    <Box component="svg" sx={{ width: 100, height: 100 }}>
-      <Box
-        component="polygon"
-        sx={{
-          fill: (theme) => theme.palette.common.white,
-          stroke: (theme) => theme.palette.divider,
-          strokeWidth: 1,
-        }}
-        points="0,100 50,00, 100,100"
-      />
-    </Box>
-  </Paper>
-);
-
 const BlogSection = ({
   row,
   sectionHeader,
@@ -63,18 +47,21 @@ const BlogSection = ({
   blogMeta,
 }) => {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState(false);
   const containerRef = React.useRef(null);
   const [page, setPage] = React.useState(1);
-
-  const handleChange = () => {
-    setChecked((prev) => !prev);
-  };
+  const [newsFiles, setNewsFiles] = React.useState([]);
 
   const handlePageChange = (event, value) => {
     setPage(value);
   };
   
+  useEffect(() => {
+    Axios.get("http://localhost:3001/files/news-file")
+    .then((res) => {
+      setNewsFiles(res.data);
+    });
+  }, []) 
+
   return (
     <BlogSectionWrapper id="blogSection">
       <Container>
@@ -97,62 +84,39 @@ const BlogSection = ({
           ref={containerRef}
         >
         <CustomBox className="row" {...row}>
-          {data.blog.map((post, index) => {
+          {newsFiles.map((file, index) => {
             if(index <= page+1 && index >= page-1){
               return (
                 <FeatureBlock
                   key={`post_key-${index}`}
-                  id={`post_id-${post.id}`}
+                  id={`post_id-${index}`}
                   className="blog__post"
                   icon={
                     <NextImage
-                      src={post.thumbnail_url}
-                      alt={`Blog Image ${post.id}`}
+                      src={`http://localhost:3001/news/${file}`}
+                      alt={`Blog Image ${index}`}
                       className="blog__image"
                       layout="fill"
                     />
                   }
                   title={
-                    <Link href={post.postLink} {...blogTitle}>
-                      {post.title}
+                    <Link href={'링크입니다.'} {...blogTitle}>
+                      {'제목입니다.'}
                     </Link>
                   }
-                  description={<Text content={post.date} {...blogMeta} />}
+                  description={<Text content={'설명입니다.'} {...blogMeta} />}
                 />)
               } else return <></>
           })}
         </CustomBox>
         </Box>
-        <Stack spacing={2} sx={{justifyContent: "space-between"}}>
+        <Stack spacing={2} style={{alignItems: 'center'}}>
           <Pagination 
             className={classes.pagination}
             count={data.blog.length-2} // 3개씩 보여야 하므로 마지막 2개 제외
             onChange={handlePageChange} 
           />
         </Stack>
-        {/* <Box
-          sx={{
-            height: 180,
-            width: 240,
-            display: 'flex',
-            padding: 2,
-            borderRadius: 1,
-            bgcolor: (theme) =>
-              theme.palette.mode === 'light' ? 'grey.100' : 'grey.900',
-            overflow: 'hidden',
-          }}
-          ref={containerRef}
-        >
-          <Box sx={{ width: 200 }}>
-            <FormControlLabel
-              control={<Switch checked={checked} onChange={handleChange} />}
-              label="Show from target"
-            />
-            <Slide direction="up" in={checked} container={containerRef.current}>
-              {icon}
-            </Slide>
-          </Box>
-        </Box> */}
       </Container>
     </BlogSectionWrapper>
   );

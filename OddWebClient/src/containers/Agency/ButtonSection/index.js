@@ -11,14 +11,14 @@ import ButtonSectionWrapper, {
 
 const ButtonSection = ({ sectionHeader, sectionTitle, btnStyle }) => {
   const router = useRouter();
-  const envTest = process.env.NEXT_PUBLIC_MANAGE_CODE;
+  const envTest = process.env.NEXT_PUBLIC_BASE_URL;
   return (
     <ButtonSectionWrapper id="ButtonSection">
       <Container>
         <Box>
           <ButtonForm>
             <Button type="button" title="Buy On OpenSea" onClick={() => window.open('https://opensea.io/', '_blank')} {...btnStyle} />
-            <Button type="button" title="More Piece of Work" onClick={() => window.open(`${envTest}/images`, '_blank')} {...btnStyle} />
+            <Button type="button" title="More Piece of Work" onClick={() => window.open(`${envTest}management/news`, '_blank')} {...btnStyle} />
           </ButtonForm>
         </Box>
       </Container>
