@@ -7,7 +7,6 @@ import Heading from 'common/components/Heading';
 import Button from 'common/components/Button';
 import FeatureBlock from 'common/components/FeatureBlock';
 import Container from 'common/components/UI/Container';
-import Particles from '../../Agency/Particle';
 import BannerWrapper, { DiscountLabel } from './bannerSection.style';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { createStore } from 'redux';

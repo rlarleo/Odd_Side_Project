@@ -1,7 +1,6 @@
 import { Modal } from '@redq/reuse-modal';
 import '@redq/reuse-modal/es/index.css';
 import 'common/assets/css/flaticon.css';
-import '../containers/CryptoModern/CountDown/timer.css';
 import 'common/assets/css/icon-example-page.css';
 // swiper bundle styles
 import 'swiper/css/bundle';

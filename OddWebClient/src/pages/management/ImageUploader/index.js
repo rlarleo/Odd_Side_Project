@@ -22,6 +22,7 @@ import Axios from 'axios';
 const ImageUploader = ({ open, setOpen }) => {
   const [file, setFile] = useState([]);
   const handleClose = () => {
+    setFile([]);
     setOpen(false);
   };
   
@@ -47,8 +48,9 @@ const ImageUploader = ({ open, setOpen }) => {
       console.log(res);
     })
     console.log(result);
+    setFile([]);
 
-  }, []);
+  }, [file]);
 
   return (
   <Dialog
