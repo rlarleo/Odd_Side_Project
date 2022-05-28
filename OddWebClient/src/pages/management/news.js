@@ -12,7 +12,7 @@ const News = () => {
   const userFileRef = useRef();
   const [saveFile, setSaveFile] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [trigger, setTrigger] = useState(true);
   async function saveFileApi({ name, file }) {
     const APIController = 'auth';
 
@@ -79,7 +79,7 @@ const News = () => {
       <Fragment>
         <ResetCSS />
         <AgencyWrapper>
-          <BlogSection />
+          <BlogSection trigger = {trigger} />
           <Button
             type="button" 
             title="이미지 업로드" 
@@ -101,7 +101,7 @@ const News = () => {
           >
             저장하기
           </Button>
-          <ImageUploader open={modalOpen} setOpen={setModalOpen} />
+          <ImageUploader open={modalOpen} setOpen={setModalOpen} trigger = {trigger} setTrigger = {setTrigger} />
         </AgencyWrapper>
         {/* End of agency wrapper section */}
       </Fragment>

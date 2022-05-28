@@ -1,5 +1,4 @@
-export class FileDTO {
-    files: File[];
+export class UploadFileDTO {
     fileName: string;
     title: string;
     description: string;

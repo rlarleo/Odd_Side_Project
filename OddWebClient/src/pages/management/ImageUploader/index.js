@@ -19,10 +19,14 @@ import {
 import ImageUploder from 'common/components/ImageUploader'
 import Axios from 'axios';
 
-const ImageUploader = ({ open, setOpen }) => {
+const ImageUploader = ({ open, setOpen, trigger, setTrigger }) => {
   const [file, setFile] = useState([]);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const handleClose = () => {
     setFile([]);
+    setTitle('');
+    setDescription('');
     setOpen(false);
   };
   
@@ -33,9 +37,9 @@ const ImageUploader = ({ open, setOpen }) => {
     }
     const files = new FormData();
     files.append('images', file[0].data);
-    files.append('fileName', 'test');
-    files.append('title', 'test');
-    files.append('description', 'test');
+    files.append('fileName', '');
+    files.append('title', title);
+    files.append('description', description);
     
     const result = Axios.post('http://localhost:3001/files/disk_upload', 
     files,
@@ -45,12 +49,17 @@ const ImageUploader = ({ open, setOpen }) => {
       },
     })
     .then(res => {
-      console.log(res);
+      alert('이미지 저장에 성공했습니다.');
+      setTrigger(!trigger);
     })
-    console.log(result);
+    .catch(function (error) {
+      alert('이미지 저장에 실패했습니다.');
+    })
     setFile([]);
-
-  }, [file]);
+    setTitle('');
+    setDescription('');
+    setOpen(false);
+  }, [file, title, description]);
 
   return (
   <Dialog
@@ -74,18 +83,20 @@ const ImageUploader = ({ open, setOpen }) => {
         <Divider orientation="vertical" flexItem />
         <Stack direction="column" flex={1} spacing={2} sx={{ pt: 2 }}>
           <TextField
-            // value={equipGeneralInfo?.equipNo || ''}
+            value={title}
             label='title'
             fullWidth
             size="small"
+            onChange={event => setTitle(event.target.value)}
           />
           <TextField
-            // value={equipGeneralInfo?.equipNo || ''}
+            value={description}
             label='description'
             fullWidth
             size="small"
             multiline
             rows={4}
+            onChange={event => setDescription(event.target.value)}
           />
         </Stack>
       </Stack>

@@ -45,12 +45,13 @@ const BlogSection = ({
   sectionSubTitle,
   blogTitle,
   blogMeta,
+  trigger,
 }) => {
   const classes = useStyles();
   const containerRef = React.useRef(null);
   const [page, setPage] = React.useState(1);
   const [newsFiles, setNewsFiles] = React.useState([]);
-
+  console.log('trigger', trigger);
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -60,7 +61,7 @@ const BlogSection = ({
     .then((res) => {
       setNewsFiles(res.data);
     });
-  }, []) 
+  }, [trigger]) 
 
   return (
     <BlogSectionWrapper id="blogSection">
@@ -93,7 +94,7 @@ const BlogSection = ({
                   className="blog__post"
                   icon={
                     <NextImage
-                      src={`http://localhost:3001/news/${file}`}
+                      src={`http://localhost:3001/news/${file.fileName}`}
                       alt={`Blog Image ${index}`}
                       className="blog__image"
                       layout="fill"
@@ -101,10 +102,10 @@ const BlogSection = ({
                   }
                   title={
                     <Link href={'링크입니다.'} {...blogTitle}>
-                      {'제목입니다.'}
+                      {file.title}
                     </Link>
                   }
-                  description={<Text content={'설명입니다.'} {...blogMeta} />}
+                  description={<Text content={file.description} {...blogMeta} />}
                 />)
               } else return <></>
           })}
@@ -113,7 +114,7 @@ const BlogSection = ({
         <Stack spacing={2} style={{alignItems: 'center'}}>
           <Pagination 
             className={classes.pagination}
-            count={data.blog.length-2} // 3개씩 보여야 하므로 마지막 2개 제외
+            count={newsFiles.length > 3 ? newsFiles.length-2 : 1} // 3개씩 보여야 하므로 마지막 2개 제외
             onChange={handlePageChange} 
           />
         </Stack>
@@ -131,6 +132,7 @@ BlogSection.propTypes = {
   sectionSubTitle: PropTypes.object,
   blogTitle: PropTypes.object,
   blogMeta: PropTypes.object,
+  trigger: PropTypes.any,
 };
 
 // BlogSection default style
