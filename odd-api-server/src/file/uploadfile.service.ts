@@ -9,7 +9,9 @@ export class UploadFileService{
     constructor(@InjectRepository(FileRepository) private fileRepository: FileRepository){}
 
     async getFields(): Promise<UploadFileDTO[] | undefined> {
-        return await this.fileRepository.find();
+        return await this.fileRepository.find( {order: {
+            id: "DESC"
+        }});
     }
 
     async save(userDTO: UploadFileDTO): Promise<UploadFileDTO | undefined> {

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from 'common/components/Box';
 import Text from 'common/components/Text';
@@ -15,6 +15,7 @@ import SlideSectionWrapper, {
   ImageWrapper,
 } from './slideSection.style';
 import { useSelector } from 'react-redux'
+import Axios from 'axios';
 
 const SlideSection = ({
   sectionHeader,
@@ -27,7 +28,7 @@ const SlideSection = ({
   designationStyle,
 }) => {
   const manager = useSelector( (state) => state );
-  console.log(manager);
+  const [newsFiles, setNewsFiles] = React.useState([]);
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -37,6 +38,13 @@ const SlideSection = ({
   };
   
   const isLogin = useSelector((state) => state);
+
+  useEffect(() => {
+    // Axios.get("http://localhost:3001/files/news-file")
+    // .then((res) => {
+    //   setNewsFiles(res.data);
+    // });
+  }, [])
 
   return (
     <SlideSectionWrapper id="slideSection">
