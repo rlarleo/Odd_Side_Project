@@ -1,6 +1,3 @@
-import BlogImage1 from '../../assets/image/agency/blog/blog-img1.png';
-import BlogImage2 from '../../assets/image/agency/blog/blog-img2.png';
-import BlogImage3 from '../../assets/image/agency/blog/blog-img3.png';
 import Member1 from '../../assets/image/agency/team/member-1.jpg';
 import Member2 from '../../assets/image/agency/team/member-2.jpg';
 import Member3 from '../../assets/image/agency/team/member-3.jpg';
@@ -120,43 +117,6 @@ const data = {
       title: 'Content Writting',
       description:
         'Proper Content Management is important to find out the real clients for your agencies .',
-    },
-  ],
-  blog: [
-    {
-      id: 1,
-      title: 'Real home corporation',
-      thumbnail_url: BlogImage1,
-      date: 'November 02, 2018',
-      postLink: '#1',
-    },
-    {
-      id: 2,
-      title: 'Sheltech developer ltd.',
-      thumbnail_url: BlogImage2,
-      date: 'November 12, 2018',
-      postLink: '#2',
-    },
-    {
-      id: 3,
-      title: 'Alt architecture co.',
-      thumbnail_url: BlogImage3,
-      date: 'December 09, 2018',
-      postLink: '#3',
-    },
-    {
-      id: 4,
-      title: 'Alt architecture co.',
-      thumbnail_url: BlogImage3,
-      date: 'December 09, 2018',
-      postLink: '#3',
-    },
-    {
-      id: 5,
-      title: 'Alt architecture co.',
-      thumbnail_url: BlogImage3,
-      date: 'December 09, 2018',
-      postLink: '#3',
     },
   ],
   teamMember: [

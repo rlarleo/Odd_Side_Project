@@ -40,10 +40,10 @@ const SlideSection = ({
   const isLogin = useSelector((state) => state);
 
   useEffect(() => {
-    // Axios.get("http://localhost:3001/files/news-file")
-    // .then((res) => {
-    //   setNewsFiles(res.data);
-    // });
+    Axios.get("http://localhost:3001/files/news-file")
+    .then((res) => {
+      setNewsFiles(res.data);
+    });
   }, [])
 
   return (
@@ -75,17 +75,21 @@ const SlideSection = ({
           }
         >
           <Fragment>
-            {data.testimonial.map((item, index) => (
+            {newsFiles.map((item, index) => (
               <GlideSlide key={index}>
                 <Fragment>
                   <TextWrapper>
                     <i className="flaticon-quotes" />
-                    <Text content={item.comment} {...commentStyle} />
-                    <Heading content={item.name} {...nameStyle} />
-                    <Heading content={item.designation} {...designationStyle} />
+                    <Text content={item.description} {...commentStyle} />
+                    <Heading content={item.title} {...nameStyle} />
+                    <Heading content={item.title} {...designationStyle} />
                   </TextWrapper>
                   <ImageWrapper>
-                    <NextImage src={item.avatar_url} alt="Client Image" />
+                    <NextImage 
+                      src={`http://localhost:3001/news/${item.fileName}`}
+                      width="100%" height="100%" layout="responsive" objectFit="contain"
+                      alt="Client Image"  
+                    />
                   </ImageWrapper>
                 </Fragment>
               </GlideSlide>
